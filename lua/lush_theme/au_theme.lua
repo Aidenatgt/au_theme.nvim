@@ -1,47 +1,3 @@
---
--- Built with,
---
---        ,gggg,
---       d8" "8I                         ,dPYb,
---       88  ,dP                         IP'`Yb
---    8888888P"                          I8  8I
---       88                              I8  8'
---       88        gg      gg    ,g,     I8 dPgg,
---  ,aa,_88        I8      8I   ,8'8,    I8dP" "8I
--- dP" "88P        I8,    ,8I  ,8'  Yb   I8P    I8
--- Yb,_,d88b,,_   ,d8b,  ,d8b,,8'_   8) ,d8     I8,
---  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
---
-
--- This is a starter colorscheme for use with Lush,
--- for usage guides, see :h lush or :LushRunTutorial
-
---
--- Note: Because this is a lua file, vim will append it to the runtime,
---       which means you can require(...) it in other lua code (this is useful),
---       but you should also take care not to conflict with other libraries.
---
---       (This is a lua quirk, as it has somewhat poor support for namespacing.)
---
---       Basically, name your file,
---
---       "super_theme/lua/lush_theme/super_theme_dark.lua",
---
---       not,
---
---       "super_theme/lua/dark.lua".
---
---       With that caveat out of the way...
---
-
--- Enable lush.ify on this file, run:
---
---  `:Lushify`
---
---  or
---
---  `:lua require('lush').ify()`
-
 local lush = require('lush')
 local hsl = lush.hsl
 local sea_foam  = hsl(208, 100, 80) -- Vim has a mapping, <n>C-a and <n>C-x to
@@ -50,8 +6,6 @@ local orange = sea_crest.ro(180)
 local sea_deep  = hsl(208, 90, 10)  -- you can just type them normally.
 local sea_gull  = hsl("#c6c6c6")
 
--- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
--- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
@@ -66,16 +20,6 @@ local theme = lush(function(injected_functions)
      Substitute     {bg = orange.ro(-10).li(30), fg = Normal.fg}, -- |:substitute| replacement text highlighting
      VertSplit      {fg = sea_crest, bg = orange.ro(-10)}, -- Column separating vertically split windows
      Search         {bg = orange.ro(-10).li(15), fg = Normal.fg}, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-    -- The following are the Neovim (as of 0.8.0-dev+100-g371dfb174) highlight
-    -- groups, mostly used for styling UI elements.
-    -- Comment them out and add your own properties to override the defaults.
-    -- An empty definition `{}` will clear all styling, leaving elements looking
-    -- like the 'Normal' group.
-    -- To be able to link to a group, it must already be defined, so you may have
-    -- to reorder items as you go.
-    --
-    -- See :h highlight-groups
-    --
     -- ColorColumn    { }, -- Columns set with 'colorcolumn'
     -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     -- CurSearch      { }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
@@ -137,15 +81,6 @@ local theme = lush(function(injected_functions)
     -- WildMenu       { }, -- Current match in 'wildmenu' completion
     -- WinBar         { }, -- Window bar of current window
     -- WinBarNC       { }, -- Window bar of not-current windows
-
-    -- Common vim syntax groups used for all kinds of code and markup.
-    -- Commented-out groups should chain up to their preferred (*) group
-    -- by default.
-    --
-    -- See :h group-name
-    --
-    -- Uncomment and edit if you want more specific syntax highlighting.
-
 
      --Constant       {fg = hsl("#FF8438")}, -- (*) Any constant
      String         {fg = hsl("#5CFF4A")}, --   A string constant: "this is a string"
@@ -256,7 +191,7 @@ local theme = lush(function(injected_functions)
     -- sym"@punctuation"       { }, -- Delimiter
     -- sym"@constant"          { }, -- Constant
     -- sym"@constant.builtin"  { }, -- Special
-    -- sym"@constant.macro"    { }, -- Define
+     sym"@constant.macro"    {fg=Function.fg.ro(-10), gui = "italic"}, -- Define
     -- sym"@define"            { }, -- Define
     -- sym"@macro"             { }, -- Macro
     -- sym"@string"            { }, -- String
