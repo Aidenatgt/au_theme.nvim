@@ -2,7 +2,7 @@ local lush = require('lush')
 local hsl = lush.hsl
 local sea_foam  = hsl(208, 100, 80) -- Vim has a mapping, <n>C-a and <n>C-x to
 local sea_crest = hsl(208, 90, 30)  -- increment or decrement integers, or
-local orange = sea_crest.ro(180)
+local orange = sea_crest.ro(180).li(10)
 local sea_deep  = hsl(208, 90, 10)  -- you can just type them normally.
 local sea_gull  = hsl("#c6c6c6")
 
@@ -10,10 +10,10 @@ local sea_gull  = hsl("#c6c6c6")
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
   return {
-     Normal { bg = sea_deep, fg = sea_foam.lighten(50) }, -- Goodbye gray, hello blue!
+     Normal { bg = sea_deep.li(3), fg = sea_foam.lighten(50) }, -- Goodbye gray, hello blue!
      Cursor         {bg = Normal.fg.da(20), fg = Normal.bg}, -- Character under the cursor
      CursorLine { bg = Normal.bg.lighten(5) }, -- lighten() can also be called via li()
-     LineNr { fg = orange, gui = "italic" },
+     LineNr { fg = orange, bg = sea_deep, gui = "italic" },
      CursorLineNr { LineNr, fg = orange.li(20), gui = "bold" },
      Visual { fg = Normal.bg, bg = Normal.fg.da(10) }, -- Try pressing v and selecting some text
      Comment { fg = Normal.bg.li(25).ro(-20) },
@@ -25,7 +25,7 @@ local theme = lush(function(injected_functions)
     -- CurSearch      { }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     -- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
-    -- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+     --CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     -- Directory      { }, -- Directory names (and other special names in listings)
     -- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
     -- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
@@ -45,13 +45,13 @@ local theme = lush(function(injected_functions)
     -- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
     -- MatchParen     { }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- ModeMsg        { }, -- 'showmode' message (e.g., "-- INSERT -- ")
-    -- MsgArea        { }, -- Area for messages and cmdline
+     --MsgArea        { }, -- Area for messages and cmdline
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     -- MoreMsg        { }, -- |more-prompt|
     -- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    -- NormalFloat    { }, -- Normal text in floating windows.
-    -- FloatBorder    { }, -- Border of floating windows.
-    -- FloatTitle     { }, -- Title of floating windows.
+     --NormalFloat    { }, -- Normal text in floating windows.
+     --FloatBorder    { }, -- Border of floating windows.
+     --FloatTitle     { }, -- Title of floating windows.
     -- NormalNC       { }, -- normal text in non-current windows
     -- Pmenu          { }, -- Popup menu: Normal item.
     -- PmenuSel       { }, -- Popup menu: Selected item.
@@ -68,19 +68,19 @@ local theme = lush(function(injected_functions)
     -- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-    -- StatusLine     { }, -- Status line of current window
+     StatusLine     {bg = orange.li(15)}, -- Status line of current window
     -- StatusLineNC   { }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-    -- TabLine        { }, -- Tab pages line, not active tab page label
+     --TabLine        { }, -- Tab pages line, not active tab page label
     -- TabLineFill    { }, -- Tab pages line, where there are no labels
     -- TabLineSel     { }, -- Tab pages line, active tab page label
      --Title          { }, -- Titles for output from ":set all", ":autocmd" etc.
     -- VisualNOS      { }, -- Visual mode selection when vim is "Not Owning the Selection".
     -- WarningMsg     { }, -- Warning messages
-    -- Whitespace     { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+     --Whitespace     { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
     -- Winseparator   { }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     -- WildMenu       { }, -- Current match in 'wildmenu' completion
-    -- WinBar         { }, -- Window bar of current window
-    -- WinBarNC       { }, -- Window bar of not-current windows
+     --WinBar         { }, -- Window bar of current window
+     --WinBarNC       { }, -- Window bar of not-current windows
 
      Constant       {fg = hsl("#B3FFF7")}, -- (*) Any constant
      String         {fg = hsl("#5CFF4A")}, --   A string constant: "this is a string"
@@ -88,6 +88,7 @@ local theme = lush(function(injected_functions)
     -- Number         { }, --   A number constant: 234, 0xff
      Boolean        {fg = hsl("#FF5476")}, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
+     --rustSigil {guifg = hsl("#706BFF")},
 
      Identifier     {fg = hsl("#FFC163")}, -- (*) Any variable name
      Function       {fg = hsl("#3DF9FF")}, --   Function name (also: methods for classes)
@@ -120,7 +121,7 @@ local theme = lush(function(injected_functions)
 
     -- Underlined     { gui = "underline" }, -- Text that stands out, HTML links
     -- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-    -- Error          { }, -- Any erroneous construct
+     Error          {fg = "white", bg = "red"}, -- Any erroneous construct
      --Todo           { }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- LspReferenceText            { } , -- Used for highlighting "text" references
@@ -175,7 +176,7 @@ local theme = lush(function(injected_functions)
 
     -- sym"@text.literal"      { }, -- Comment
     -- sym"@text.reference"    { }, -- Identifier
-    -- sym"@text.title"        { }, -- Title
+     --sym"@text.title"        { }, -- Title
     -- sym"@text.uri"          { }, -- Underlined
     -- sym"@text.underline"    { }, -- Underlined
     -- sym"@text.todo"         { }, -- Todo
