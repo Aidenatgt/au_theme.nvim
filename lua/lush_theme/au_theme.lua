@@ -51,7 +51,7 @@ local theme = lush(function(injected_functions)
     -- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     -- NormalFloat    { }, -- Normal text in floating windows.
     -- FloatBorder    { }, -- Border of floating windows.
-     FloatTitle     {gui="underline"}, -- Title of floating windows.
+    -- FloatTitle     { }, -- Title of floating windows.
     -- NormalNC       { }, -- normal text in non-current windows
     -- Pmenu          { }, -- Popup menu: Normal item.
     -- PmenuSel       { }, -- Popup menu: Selected item.
@@ -73,7 +73,7 @@ local theme = lush(function(injected_functions)
     -- TabLine        { }, -- Tab pages line, not active tab page label
     -- TabLineFill    { }, -- Tab pages line, where there are no labels
     -- TabLineSel     { }, -- Tab pages line, active tab page label
-     --Title          {fg = hsl("#73C0FF"), gui = "bold"}, -- Titles for output from ":set all", ":autocmd" etc.
+     --Title          { }, -- Titles for output from ":set all", ":autocmd" etc.
     -- VisualNOS      { }, -- Visual mode selection when vim is "Not Owning the Selection".
     -- WarningMsg     { }, -- Warning messages
     -- Whitespace     { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
