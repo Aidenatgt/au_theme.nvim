@@ -73,7 +73,7 @@ local theme = lush(function(injected_functions)
     -- TabLine        { }, -- Tab pages line, not active tab page label
     -- TabLineFill    { }, -- Tab pages line, where there are no labels
     -- TabLineSel     { }, -- Tab pages line, active tab page label
-    -- Title          { }, -- Titles for output from ":set all", ":autocmd" etc.
+     Title          {fg = hsl("#73C0FF"), gui = "bold"}, -- Titles for output from ":set all", ":autocmd" etc.
     -- VisualNOS      { }, -- Visual mode selection when vim is "Not Owning the Selection".
     -- WarningMsg     { }, -- Warning messages
     -- Whitespace     { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -82,14 +82,14 @@ local theme = lush(function(injected_functions)
     -- WinBar         { }, -- Window bar of current window
     -- WinBarNC       { }, -- Window bar of not-current windows
 
-     --Constant       {fg = hsl("#FF8438")}, -- (*) Any constant
+     Constant       {fg = hsl("#B3FFF7")}, -- (*) Any constant
      String         {fg = hsl("#5CFF4A")}, --   A string constant: "this is a string"
      Character      {fg = String.fg.desaturate(40).ro(15)}, --   A character constant: 'c', '\n'
     -- Number         { }, --   A number constant: 234, 0xff
      Boolean        {fg = hsl("#FF5476")}, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
-    -- Identifier     { }, -- (*) Any variable name
+     Identifier     {fg = hsl("#FFC163")}, -- (*) Any variable name
      Function       {fg = hsl("#3DF9FF")}, --   Function name (also: methods for classes)
 
      Statement      {fg = hsl("#FF8438")}, -- (*) Any statement
@@ -123,12 +123,6 @@ local theme = lush(function(injected_functions)
     -- Error          { }, -- Any erroneous construct
     -- Todo           { }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-    -- These groups are for the native LSP client and diagnostic system. Some
-    -- other LSP clients may use these groups, or use their own. Consult your
-    -- LSP client's documentation.
-
-    -- See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
-    --
     -- LspReferenceText            { } , -- Used for highlighting "text" references
     -- LspReferenceRead            { } , -- Used for highlighting "read" references
     -- LspReferenceWrite           { } , -- Used for highlighting "write" references
@@ -136,8 +130,6 @@ local theme = lush(function(injected_functions)
     -- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
     -- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
-    -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
-    --
     -- DiagnosticError            { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticWarn             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticInfo             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
