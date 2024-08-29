@@ -130,7 +130,7 @@ local theme = lush(function(injected_functions)
     -- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
     -- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
-    -- DiagnosticError            { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+     --DiagnosticError            { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticWarn             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticInfo             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticHint             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
@@ -140,11 +140,11 @@ local theme = lush(function(injected_functions)
     -- DiagnosticVirtualTextInfo  { } , -- Used for "Info" diagnostic virtual text.
     -- DiagnosticVirtualTextHint  { } , -- Used for "Hint" diagnostic virtual text.
     -- DiagnosticVirtualTextOk    { } , -- Used for "Ok" diagnostic virtual text.
-    -- DiagnosticUnderlineError   { } , -- Used to underline "Error" diagnostics.
-    -- DiagnosticUnderlineWarn    { } , -- Used to underline "Warn" diagnostics.
-    -- DiagnosticUnderlineInfo    { } , -- Used to underline "Info" diagnostics.
-    -- DiagnosticUnderlineHint    { } , -- Used to underline "Hint" diagnostics.
-    -- DiagnosticUnderlineOk      { } , -- Used to underline "Ok" diagnostics.
+     DiagnosticUnderlineError   {gui = "undercurl", sp="red"} , -- Used to underline "Error" diagnostics.
+     DiagnosticUnderlineWarn    {gui = "undercurl", sp="yellow"} , -- Used to underline "Warn" diagnostics.
+     DiagnosticUnderlineInfo    {gui = "underline", sp="cyan"} , -- Used to underline "Info" diagnostics.
+     DiagnosticUnderlineHint    {gui = "undercurl", sp="cyan"} , -- Used to underline "Hint" diagnostics.
+     DiagnosticUnderlineOk      {gui = "underline", sp="green"} , -- Used to underline "Ok" diagnostics.
     -- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
     -- DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
     -- DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.
