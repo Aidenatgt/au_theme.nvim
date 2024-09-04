@@ -19,10 +19,10 @@ local theme = lush(function(injected_functions)
      Comment { fg = Normal.bg.li(25).ro(-20) },
      Substitute     {bg = orange.ro(-10).li(30), fg = Normal.fg}, -- |:substitute| replacement text highlighting
      VertSplit      {fg = sea_crest, bg = orange.ro(-10)}, -- Column separating vertically split windows
-     Search         {bg = orange.ro(-10).li(15), fg = Normal.fg}, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+     Search         {bg= orange.ro(-10).li(15), fg = Normal.fg}, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     -- ColorColumn    { }, -- Columns set with 'colorcolumn'
     -- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
-    -- CurSearch      { }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
+     CurSearch      {bg= orange.ro(-10).li(15), fg = Normal.fg}, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     -- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
      --CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -43,7 +43,7 @@ local theme = lush(function(injected_functions)
     -- LineNrBelow    { }, -- Line number for when the 'relativenumber' option is set, below the cursor line
     -- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     -- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    -- MatchParen     { }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+     MatchParen     {bg= sea_deep.de(70).li(30), fg=orange.li(30)}, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- ModeMsg        { }, -- 'showmode' message (e.g., "-- INSERT -- ")
      --MsgArea        { }, -- Area for messages and cmdline
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
@@ -88,7 +88,6 @@ local theme = lush(function(injected_functions)
     -- Number         { }, --   A number constant: 234, 0xff
      Boolean        {fg = hsl("#FF5476")}, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
-     --rustSigil {guifg = hsl("#706BFF")},
 
      Identifier     {fg = hsl("#FFC163")}, -- (*) Any variable name
      Function       {fg = hsl("#3DF9FF")}, --   Function name (also: methods for classes)
@@ -121,7 +120,7 @@ local theme = lush(function(injected_functions)
 
     -- Underlined     { gui = "underline" }, -- Text that stands out, HTML links
     -- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-     Error          {fg = "white", bg = "red"}, -- Any erroneous construct
+     Error          {fg = "white", bg = hsl(360, 100, 68)}, -- Any erroneous construct
      --Todo           { }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- LspReferenceText            { } , -- Used for highlighting "text" references
